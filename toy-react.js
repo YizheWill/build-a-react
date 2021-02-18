@@ -4,7 +4,12 @@ class ElementWrapper {
     this.root = document.createElement(type);
   }
   setAttribute(name, value) {
-    this.root.setAttribute(name, value);
+    if (name.match(/^on([\s\S]+)$/))
+      this.root.addEventListener(
+        RegExp.$1.replace(/^[\s\s]/, (c) => c.toLowerCase()),
+        value
+      );
+    else this.root.setAttribute(name, value);
   }
   appendChild(component) {
     let range = document.createRange();
@@ -50,6 +55,10 @@ export class Component {
   [RENDER_TO_DOM](range) {
     this._range = range;
     this.render()[RENDER_TO_DOM](range);
+  }
+  rerender() {
+    this._range.deleteContents();
+    this[RENDER_TO_DOM](this._range);
   }
 }
 

@@ -11,6 +11,14 @@ class MyComponent extends Component {
         <h1>My component</h1>
         <span>{this.state.a.toString()}</span>
         {this.children}
+        <button
+          onclick={() => {
+            this.state.a += 1;
+            this.rerender();
+          }}
+        >
+          add
+        </button>
       </div>
     );
   }
@@ -19,8 +27,6 @@ class MyComponent extends Component {
 render(
   <MyComponent id='a' class='c'>
     <div>abc</div>
-    <div></div>
-    <div></div>
   </MyComponent>,
   document.body
 );
