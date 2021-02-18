@@ -1,8 +1,13 @@
-import { createElement } from './toy-react';
+import { createElement, Component, render } from './toy-react';
 
-class MyComponent {
+class MyComponent extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <h1>My component</h1>
+        {this.children}
+      </div>
+    );
   }
 }
 
@@ -11,5 +16,6 @@ render(
     <div>abc</div>
     <div></div>
     <div></div>
-  </MyComponent>
+  </MyComponent>,
+  document.body
 );
