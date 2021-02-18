@@ -33,6 +33,7 @@ export class Component {
     this.props = Object.create(null);
     this.children = [];
     this._root = null;
+    this._range = null;
   }
   setAttribute(name, value) {
     this.props[name] = value;
@@ -47,6 +48,7 @@ export class Component {
   // to make the function hard to get from outside => make it private
   // function _renderToDom(location // we can use range api) {}
   [RENDER_TO_DOM](range) {
+    this._range = range;
     this.render()[RENDER_TO_DOM](range);
   }
 }
