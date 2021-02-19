@@ -13,12 +13,12 @@ class MyComponent extends Component {
         {this.children}
         <button
           onclick={() => {
-            this.state.a += 1;
-            this.rerender();
+            this.setState({ a: this.state.a + 1 });
           }}
         >
           add
         </button>
+        <span>{this.state.b.toString()}</span>
       </div>
     );
   }
