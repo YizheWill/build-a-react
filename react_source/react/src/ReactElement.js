@@ -7,7 +7,7 @@
 
 import getComponentName from 'shared/getComponentName';
 import invariant from 'shared/invariant';
-import {REACT_ELEMENT_TYPE} from 'shared/ReactSymbols';
+import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
 
 import ReactCurrentOwner from './ReactCurrentOwner';
 
@@ -53,7 +53,7 @@ function hasValidKey(config) {
 }
 
 function defineKeyPropWarningGetter(props, displayName) {
-  const warnAboutAccessingKey = function() {
+  const warnAboutAccessingKey = function () {
     if (__DEV__) {
       if (!specialPropKeyWarningShown) {
         specialPropKeyWarningShown = true;
@@ -62,7 +62,7 @@ function defineKeyPropWarningGetter(props, displayName) {
             'in `undefined` being returned. If you need to access the same ' +
             'value within the child component, you should pass it as a different ' +
             'prop. (https://reactjs.org/link/special-props)',
-          displayName,
+          displayName
         );
       }
     }
@@ -75,7 +75,7 @@ function defineKeyPropWarningGetter(props, displayName) {
 }
 
 function defineRefPropWarningGetter(props, displayName) {
-  const warnAboutAccessingRef = function() {
+  const warnAboutAccessingRef = function () {
     if (__DEV__) {
       if (!specialPropRefWarningShown) {
         specialPropRefWarningShown = true;
@@ -84,7 +84,7 @@ function defineRefPropWarningGetter(props, displayName) {
             'in `undefined` being returned. If you need to access the same ' +
             'value within the child component, you should pass it as a different ' +
             'prop. (https://reactjs.org/link/special-props)',
-          displayName,
+          displayName
         );
       }
     }
@@ -115,7 +115,7 @@ function warnIfStringRefCannotBeAutoConverted(config) {
             'Learn more about using refs safely here: ' +
             'https://reactjs.org/link/strict-mode-string-ref',
           componentName,
-          config.ref,
+          config.ref
         );
         didWarnAboutStringRefs[componentName] = true;
       }
@@ -143,7 +143,7 @@ function warnIfStringRefCannotBeAutoConverted(config) {
  * indicating filename, line number, and/or other information.
  * @internal
  */
-const ReactElement = function(type, key, ref, self, source, owner, props) {
+const ReactElement = function (type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allows us to uniquely identify this as a React Element
     $$typeof: REACT_ELEMENT_TYPE,
@@ -259,7 +259,7 @@ export function jsx(type, config, maybeKey) {
     undefined,
     undefined,
     ReactCurrentOwner.current,
-    props,
+    props
   );
 }
 
@@ -337,7 +337,7 @@ export function jsxDEV(type, config, maybeKey, source, self) {
     self,
     source,
     ReactCurrentOwner.current,
-    props,
+    props
   );
 }
 
@@ -429,7 +429,7 @@ export function createElement(type, config, children) {
     self,
     source,
     ReactCurrentOwner.current,
-    props,
+    props
   );
 }
 
@@ -456,7 +456,7 @@ export function cloneAndReplaceKey(oldElement, newKey) {
     oldElement._self,
     oldElement._source,
     oldElement._owner,
-    oldElement.props,
+    oldElement.props
   );
 
   return newElement;
@@ -470,7 +470,7 @@ export function cloneElement(element, config, children) {
   invariant(
     !(element === null || element === undefined),
     'React.cloneElement(...): The argument must be a React element, but you passed %s.',
-    element,
+    element
   );
 
   let propName;
